@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de comandos Git</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="topo">
+            <button type="button" id="btn-tema" class="btn-tema">Tema: auto</button>
+        </div>
+        <h1>Guia de comandos <span>Git</span></h1>
+        <p class="subtitulo">Passo a passo do fluxo de trabalho com Git e GitHub.</p>
+        <input type="search" id="busca" class="busca" placeholder="Buscar etapa ou comando (ex: branch, push)" aria-label="Buscar etapa ou comando">
+        <ol>
+            <li>Configuração inicial (apenas uma vez por máquina)
+                <ol>
+                    <li>Configure seu nome e e-mail.
+                        <pre><code>git config --global user.name "SaBurle"</code></pre>
+                        <pre><code>git config --global user.email "seu.email@email.com"</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Clonando ou iniciando um repositório
+                <ol>
+                    <li>Clonar um repositório remoto existente.
+                        <pre><code>git clone https://github.com/usuario/repositorio.git</code></pre>
+                        <pre><code>cd repositorio</code></pre>
+                    </li>
+                    <li>Se ainda não existe um repositório remoto:
+                        <pre><code>mkdir meu-projeto</code></pre>
+                        <pre><code>cd meu-projeto</code></pre>
+                        <pre><code>git init</code></pre>
+                        <pre><code>git remote add origin https://github.com/usuario/meu-projeto.git</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Criando ou alternando para uma branch
+                <ol>
+                    <li>Crie uma nova branch para as suas implementações (boa prática).
+                        <pre><code>git checkout -b minha-branch</code></pre>
+                    </li>
+                    <li>Ou alterne para uma branch que já existe.
+                        <pre><code>git checkout main</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Fazendo modificações no código
+                <ol>
+                    <li>Realize as implementações necessárias no projeto.</li>
+                </ol>
+            </li>
+            <li>Adicione as alterações ao "stage" e faça um commit
+                <p>O "stage" é uma área temporária onde você prepara as alterações antes de fazer o commit.</p>
+                <ol>
+                    <li>Para adicionar um arquivo específico:
+                        <pre><code>git add nome-do-arquivo</code></pre>
+                    </li>
+                    <li>Para adicionar todos os arquivos modificados:
+                        <pre><code>git add .</code></pre>
+                    </li>
+                    <li>Crie um commit para registrar suas mudanças.
+                        <pre><code>git commit -m "mensagem do commit"</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Enviando alterações para o repositório remoto
+                <ol>
+                    <li>Certifique-se de que está na branch correta.
+                        <pre><code>git branch</code></pre>
+                    </li>
+                    <li>Envie suas alterações para o repositório remoto.
+                        <pre><code>git push origin minha-branch</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Sincronizando alterações
+                <ol>
+                    <li>Atualize sua branch local com as mudanças remotas.
+                        <pre><code>git merge</code></pre>
+                    </li>
+                    <li>Resolva os conflitos, se houver.
+                        <ul>
+                            <li>Edite os arquivos conflitantes.</li>
+                            <li>Após resolver os conflitos, adicione os arquivos corrigidos.
+                                <pre><code>git add nome-do-arquivo</code></pre>
+                                <pre><code>git commit -m "resolvendo conflitos"</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>Determine o tipo de repositório
+                <ol>
+                    <li>Se for um repositório colaborativo (envolvendo outras pessoas):
+                        <ul>
+                            <li>Abra um pull request (PR) ou merge request (MR) na plataforma do repositório remoto (GitHub, GitLab etc.) para revisão e aprovação.</li>
+                        </ul>
+                    </li>
+                    <li>Se for um repositório pessoal (trabalho individual):
+                        <ul>
+                            <li>Faça o merge diretamente na branch principal.
+                                <pre><code>git checkout main</code></pre>
+                                <pre><code>git merge minha-branch</code></pre>
+                                <pre><code>git push origin main</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>Publicando a página online com GitHub Pages (opcional)
+                <p>O GitHub Pages transforma o repositório em um site, com um link público.</p>
+                <ol>
+                    <li>No repositório, abra <strong>Settings</strong> e depois <strong>Pages</strong>.</li>
+                    <li>Em <strong>Source</strong>, escolha <strong>Deploy from a branch</strong>.</li>
+                    <li>Em <strong>Branch</strong>, selecione <strong>main</strong> e a pasta <strong>/ (root)</strong>. Depois clique em <strong>Save</strong>.</li>
+                    <li>Aguarde de 1 a 2 minutos. O link aparece no topo da página Pages, neste formato: <code>https://usuario.github.io/repositorio/</code></li>
+                </ol>
+            </li>
+        </ol>
+        <p id="sem-resultado" class="sem-resultado" hidden>Nenhum resultado encontrado.</p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

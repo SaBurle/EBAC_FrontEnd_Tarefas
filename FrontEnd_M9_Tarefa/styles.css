@@ -1,0 +1,136 @@
+/* ========== 1. VARIÁVEIS ========== */
+:root {
+    --fundo: #ffffff;
+    --texto: #1e1a2b;
+    --campo-fundo: #f6f4fb;
+    --campo-borda: #d9d4e8;
+    --foco: #8a6fe0;
+    --botao: #2d2b3a;
+    --botao-hover: #46435a;
+    --botao-texto: #ffffff;
+    --grad-ini: #e0457b;  /* rosa */
+    --grad-fim: #6d7be0;  /* lilás azulado */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fundo: #0f0d18;
+        --texto: #eeeafb;
+        --campo-fundo: #191625;
+        --campo-borda: #2b2740;
+        --foco: #a084ff;
+        --botao: #a084ff;
+        --botao-hover: #b8a2ff;
+        --botao-texto: #0f0d18;
+        --grad-ini: #ff6fa3;
+        --grad-fim: #8f9dff;
+    }
+}
+
+/* ========== 2. BASE ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 16px 48px;
+}
+
+/* ========== 3. TÍTULO (faixa em degradê) ========== */
+h2 {
+    margin: 0 -16px 24px;
+    padding: 28px 16px;
+    background: linear-gradient(90deg, var(--grad-ini), var(--grad-fim));
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+/* ========== 4. FORMULÁRIO ========== */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+input {
+    flex: 1 1 140px;
+    min-width: 0;
+    padding: 12px 14px;
+    background: var(--campo-fundo);
+    color: var(--texto);
+    border: 1px solid var(--campo-borda);
+    border-radius: 10px;
+    font: inherit;
+}
+
+input:focus {
+    outline: 2px solid var(--foco);
+    outline-offset: 1px;
+}
+
+button {
+    padding: 12px 18px;
+    background: var(--botao);
+    color: var(--botao-texto);
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--botao-hover);
+}
+
+#salvar {
+    flex: 1 1 100%;
+}
+
+/* ========== 5. LISTA ========== */
+ul {
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    background: var(--campo-fundo);
+    border: 1px solid var(--campo-borda);
+    border-left: 4px solid var(--grad-fim);
+    border-radius: 10px;
+}
+
+li span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+li button {
+    padding: 6px 12px;
+    background: linear-gradient(90deg, var(--grad-ini), var(--grad-fim));
+    color: #ffffff;
+    font-size: 0.85rem;
+}
+
+li button:hover {
+    background: linear-gradient(90deg, var(--grad-ini), var(--grad-fim));
+    filter: brightness(0.92);
+}
