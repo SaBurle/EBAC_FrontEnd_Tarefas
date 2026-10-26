@@ -1,0 +1,655 @@
+/* ==========================================
+   1. Cores (tema claro e escuro automático)
+   ========================================== */
+:root {
+    --fundo: #F7F5FC;
+    --cartao: #FFFFFF;
+    --texto: #1E1A2B;
+    --apoio: #5F5A72;
+    --linha: #E3DEF0;
+    --principal: #6D3FE0;
+    --sobre-principal: #FFFFFF;   /* texto em cima da cor principal */
+    --azul: #3B5BDB;
+    --chumbo: #2D2B3A;
+    --ciano: #14B8C8;
+    --ciano-texto: #0E8FA0;
+    --hero-fundo: linear-gradient(135deg, #EDE6FF 0%, #F7F5FC 65%);
+    --sombra: 0 0.25rem 1.25rem rgba(45, 43, 58, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fundo: #0F0D18;
+        --cartao: #191625;
+        --texto: #EEEAFB;
+        --apoio: #A29DB8;
+        --linha: #2B2740;
+        --principal: #A084FF;
+        --sobre-principal: #0F0D18;
+        --azul: #7C9BFF;
+        --ciano: #35D0DD;
+        --ciano-texto: #35D0DD;
+        --hero-fundo: linear-gradient(135deg, #1B1633 0%, #0F0D18 65%);
+        --sombra: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.35);
+    }
+}
+
+/* ==========================================
+   2. Base (mobile-first: estas regras valem para o celular)
+   ========================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;           /* 1rem = 16px do navegador */
+    scroll-padding-top: 5rem;  /* o menu fixo não cobre o título da seção */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 0.75em;
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem);   /* cresce com a largura da tela */
+}
+
+h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    color: var(--principal);
+}
+
+/* Imagens flexíveis */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+figure {
+    margin: 0;
+}
+
+/* Contêiner central: 90% da tela, com limite em telas grandes */
+.container {
+    width: 90%;
+    max-width: 72rem;
+    margin-inline: auto;
+}
+
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+    outline: 0.1875rem solid var(--ciano);
+    outline-offset: 0.1875rem;
+}
+
+/* Só leitores de tela "veem" este texto */
+.sr-somente {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.pular {
+    position: absolute;
+    top: -4rem;
+    left: 1rem;
+    z-index: 20;
+    padding: 0.75rem 1rem;
+    background: var(--principal);
+    color: var(--sobre-principal);
+    border-radius: 0.5rem;
+}
+
+.pular:focus {
+    top: 1rem;
+}
+
+/* ==========================================
+   3. Cabeçalho, logo e menu (Flexbox)
+   ========================================== */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--cartao);
+    border-bottom: 1px solid var(--linha);
+}
+
+.cabecalho-interno {
+    display: flex;
+    flex-wrap: wrap;                  /* o menu cai para a linha de baixo no celular */
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-block: 0.75rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--texto);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.125rem;
+    text-decoration: none;
+}
+
+.logo-icone {
+    width: 2rem;
+    height: 2rem;
+    color: var(--principal);
+}
+
+.logo strong {
+    color: var(--principal);
+}
+
+/* Botão hambúrguer (checkbox escondido + label) */
+.menu-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.menu-botao {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;                   /* área de toque confortável */
+    height: 2.75rem;
+    border: 1px solid var(--linha);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.menu-toggle:focus-visible + .menu-botao {
+    outline: 0.1875rem solid var(--ciano);
+    outline-offset: 0.1875rem;
+}
+
+/* As 3 barrinhas: uma no meio e duas nas pontas (::before e ::after) */
+.menu-icone,
+.menu-icone::before,
+.menu-icone::after {
+    display: block;
+    width: 1.5rem;
+    height: 0.125rem;
+    background: var(--texto);
+    border-radius: 0.125rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menu-icone {
+    position: relative;
+}
+
+.menu-icone::before,
+.menu-icone::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.menu-icone::before {
+    top: -0.4375rem;
+}
+
+.menu-icone::after {
+    top: 0.4375rem;
+}
+
+/* Menu aberto: as barras viram um X */
+.menu-toggle:checked + .menu-botao .menu-icone {
+    background: transparent;
+}
+
+.menu-toggle:checked + .menu-botao .menu-icone::before {
+    transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.menu-toggle:checked + .menu-botao .menu-icone::after {
+    transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
+/* Lista de links: escondida no celular até marcar o checkbox */
+.menu {
+    display: none;
+    width: 100%;
+}
+
+.menu-toggle:checked ~ .menu {
+    display: block;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.75rem 0 0.5rem;
+    list-style: none;
+}
+
+.menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: var(--linha);
+    color: var(--principal);
+}
+
+/* ==========================================
+   4. Botões
+   ========================================== */
+.botao {
+    display: inline-block;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--principal);
+    color: var(--sobre-principal);
+    border: 2px solid var(--principal);
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    filter: brightness(1.1);
+}
+
+.botao-secundario {
+    background: transparent;
+    color: var(--principal);
+}
+
+.botao-secundario:hover {
+    background: var(--linha);
+    filter: none;
+}
+
+/* ==========================================
+   5. Home (banner de boas-vindas)
+   ========================================== */
+.hero {
+    padding-block: 2.5rem 3rem;
+    background: var(--hero-fundo);
+}
+
+.hero-interno {
+    display: flex;
+    flex-direction: column;     /* celular: texto em cima, imagem embaixo */
+    gap: 2rem;
+}
+
+.etiqueta {
+    margin-bottom: 0.75rem;
+    color: var(--ciano-texto);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero-descricao {
+    max-width: 36rem;
+    color: var(--apoio);
+    font-size: 1.125rem;
+}
+
+.hero-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.hero-imagem img {
+    width: 100%;
+    box-shadow: var(--sombra);
+}
+
+/* ==========================================
+   6. Seções em geral
+   ========================================== */
+.secao {
+    padding-block: 3rem;
+}
+
+.secao-destaque {
+    background: var(--cartao);
+    border-block: 1px solid var(--linha);
+}
+
+.secao-intro {
+    max-width: 36rem;
+    color: var(--apoio);
+}
+
+/* ==========================================
+   7. Sobre nós
+   ========================================== */
+.sobre-interno {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sobre-imagem img {
+    width: 100%;
+}
+
+.numeros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--apoio);
+}
+
+.numeros strong {
+    display: block;
+    color: var(--principal);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+/* ==========================================
+   8. Serviços (CSS Grid)
+   ========================================== */
+.servicos-grid {
+    display: grid;
+    grid-template-columns: 1fr;     /* celular: 1 coluna */
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: servico;
+}
+
+.cartao {
+    counter-increment: servico;
+    padding: 1.5rem;
+    background: var(--fundo);
+    border: 1px solid var(--linha);
+    border-left: 0.25rem solid var(--principal);
+    border-radius: 0.75rem;
+}
+
+.cartao::before {
+    content: counter(servico, decimal-leading-zero);
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--ciano-texto);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.cartao p {
+    margin: 0;
+    color: var(--apoio);
+}
+
+/* ==========================================
+   9. Depoimentos
+   ========================================== */
+.depoimentos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.depoimento {
+    flex: 1;
+    padding: 1.5rem;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+    border-radius: 0.75rem;
+    box-shadow: var(--sombra);
+}
+
+.depoimento blockquote {
+    margin: 0 0 1rem;
+}
+
+.depoimento blockquote::before {
+    content: "\201C";
+    display: block;
+    height: 2rem;
+    color: var(--principal);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.depoimento blockquote p {
+    margin: 0;
+}
+
+.depoimento figcaption {
+    color: var(--apoio);
+    font-size: 0.9375rem;
+}
+
+.depoimento figcaption strong {
+    color: var(--texto);
+}
+
+/* ==========================================
+   10. Contato e formulário
+   ========================================== */
+.contato-interno {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+address {
+    font-style: normal;
+}
+
+address p {
+    margin-bottom: 1rem;
+}
+
+.nota {
+    color: var(--apoio);
+    font-size: 0.875rem;
+}
+
+.formulario {
+    padding: 1.5rem;
+    background: var(--fundo);
+    border: 1px solid var(--linha);
+    border-radius: 0.75rem;
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.75rem 0.875rem;
+    background: var(--cartao);
+    color: var(--texto);
+    border: 1px solid var(--linha);
+    border-radius: 0.5rem;
+    font: inherit;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--principal);
+    box-shadow: 0 0 0 0.1875rem var(--linha);
+}
+
+.formulario .botao {
+    width: 100%;
+}
+
+/* ==========================================
+   11. Rodapé
+   ========================================== */
+.rodape {
+    padding-block: 1.5rem;
+    background: var(--chumbo);
+    color: #EEEAFB;
+    font-size: 0.9375rem;
+    text-align: center;
+}
+
+.rodape p {
+    margin: 0;
+}
+
+/* ==========================================
+   12. Media queries (mobile-first: só aumentam, com min-width)
+   ========================================== */
+
+/* A partir de 600px: serviços em 2 colunas */
+@media (min-width: 600px) {
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formulario .botao {
+        width: auto;
+    }
+}
+
+/* A partir de 768px: menu em linha, seções lado a lado */
+@media (min-width: 768px) {
+    .menu-botao {
+        display: none;               /* some o hambúrguer */
+    }
+
+    .menu {
+        display: block;              /* o menu fica sempre visível */
+        width: auto;
+    }
+
+    .menu ul {
+        flex-direction: row;
+        gap: 0.25rem;
+        padding: 0;
+    }
+
+    .hero {
+        padding-block: 4rem;
+    }
+
+    .hero-interno,
+    .sobre-interno,
+    .contato-interno {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .hero-interno {
+        min-height: 60vh;
+    }
+
+    .hero-texto,
+    .hero-imagem,
+    .sobre-imagem,
+    .sobre-texto {
+        flex: 1;
+    }
+
+    .secao {
+        padding-block: 4.5rem;
+    }
+
+    .depoimentos-lista {
+        flex-direction: row;
+    }
+
+    .contato-interno {
+        align-items: flex-start;
+    }
+
+    .contato-info {
+        flex: 1;
+    }
+
+    .formulario {
+        flex: 1.4;
+        padding: 2rem;
+    }
+}
+
+/* A partir de 992px: serviços em 3 colunas */
+@media (min-width: 992px) {
+    .servicos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+}
