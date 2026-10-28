@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agência Criativa Web: agência de design digital fictícia (projeto do módulo 11 - Web Design Responsivo).">
+    <title>Agência Criativa Web</title>
+
+    <!-- Fontes: Fraunces (títulos) e Source Sans 3 (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+
+    <!-- Cabeçalho: logo + menu de navegação (hambúrguer com JavaScript) -->
+    <header class="cabecalho">
+        <div class="cabecalho__interno">
+            <a class="logo" href="#" aria-label="Agência Criativa Web - ir para o início">
+                <svg class="logo__icone" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                    <rect width="32" height="32" rx="9" fill="currentColor"/>
+                    <circle cx="12" cy="12" r="5" fill="#14B8C8"/>
+                    <rect x="15" y="15" width="10" height="10" rx="3" fill="#fff"/>
+                </svg>
+                <span class="logo__texto">Agência <strong class="logo__destaque">Criativa</strong> Web</span>
+            </a>
+
+            <nav class="menu" aria-label="Menu principal">
+                <button class="menu__botao" type="button">
+                    <span class="sr-somente">Abrir ou fechar o menu</span>
+                    <span class="menu__icone" aria-hidden="true"></span>
+                </button>
+                <ul class="menu__lista">
+                    <li class="menu__item menu__item--ativo"><a class="menu__link menu__link--ativo" href="#">Home</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Sobre nós</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Serviços</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Depoimentos</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home: banner de boas-vindas -->
+        <section class="hero">
+            <div class="container hero__interno">
+                <div class="hero__texto">
+                    <p class="hero__etiqueta">Agência de design digital</p>
+                    <h1>Ideias criativas para marcas que querem ser vistas</h1>
+                    <p class="hero__descricao">Bem-vindo à Agência Criativa Web. Criamos identidades, sites e experiências digitais que funcionam bem em qualquer tela.</p>
+                    <div class="hero__acoes">
+                        <a class="botao" href="#">Peça um orçamento</a>
+                        <a class="botao botao--secundario" href="#">Conheça os serviços</a>
+                    </div>
+                </div>
+
+                <figure class="hero__imagem">
+                    <img
+                        class="hero__img"
+                        src="img/banner-960.jpg"
+                        srcset="img/banner-480.jpg 480w, img/banner-960.jpg 960w, img/banner-1600.jpg 1600w"
+                        sizes="(min-width: 768px) 45vw, 90vw"
+                        width="960" height="720"
+                        alt="Ilustração de uma janela de navegador com blocos coloridos e um cartão de perfil sobre fundo em degradê roxo e azul">
+                </figure>
+            </div>
+        </section>
+
+        <!-- Sobre nós -->
+        <section class="secao">
+            <div class="container sobre__interno">
+                <figure class="sobre__imagem">
+                    <img
+                        class="sobre__img"
+                        src="img/sobre-960.jpg"
+                        srcset="img/sobre-480.jpg 480w, img/sobre-960.jpg 960w, img/sobre-1440.jpg 1440w"
+                        sizes="(min-width: 768px) 40vw, 90vw"
+                        width="960" height="640"
+                        loading="lazy"
+                        alt="Composição de formas geométricas coloridas: quadrados, círculos e quartos de círculo em tons de roxo, branco e ciano">
+                </figure>
+
+                <div class="sobre__texto">
+                    <h2>Sobre nós</h2>
+                    <p>A Agência Criativa Web é uma equipe de designers e desenvolvedores apaixonada por transformar ideias em experiências digitais claras, bonitas e acessíveis.</p>
+                    <p>Trabalhamos com o método mobile-first: pensamos primeiro no celular e evoluímos o projeto para tablets e computadores, para que a sua marca fique ótima em qualquer tela.</p>
+
+                    <ul class="sobre__numeros">
+                        <li><strong class="sobre__valor">10+</strong> anos de estrada</li>
+                        <li><strong class="sobre__valor">250</strong> projetos entregues</li>
+                        <li><strong class="sobre__valor">98%</strong> de clientes satisfeitos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços: lista em grid -->
+        <section class="secao secao--destaque">
+            <div class="container">
+                <h2>Serviços</h2>
+                <p class="secao__intro">Do primeiro rascunho ao site no ar, cuidamos de cada etapa.</p>
+
+                <ul class="servicos__lista">
+                    <li class="cartao">
+                        <h3>Identidade visual</h3>
+                        <p class="cartao__texto">Logotipo, paleta de cores e tipografia para dar uma cara única à sua marca.</p>
+                    </li>
+                    <li class="cartao">
+                        <h3>Design de interfaces</h3>
+                        <p class="cartao__texto">Telas pensadas para quem usa: simples de entender e agradáveis de navegar.</p>
+                    </li>
+                    <li class="cartao">
+                        <h3>Sites responsivos</h3>
+                        <p class="cartao__texto">Páginas que se adaptam ao celular, ao tablet e ao computador sem perder a qualidade.</p>
+                    </li>
+                    <li class="cartao">
+                        <h3>Lojas virtuais</h3>
+                        <p class="cartao__texto">E-commerce rápido e fácil de usar, com foco em transformar visitas em vendas.</p>
+                    </li>
+                    <li class="cartao">
+                        <h3>Redes sociais</h3>
+                        <p class="cartao__texto">Peças e modelos de posts alinhados à identidade visual da marca.</p>
+                    </li>
+                    <li class="cartao">
+                        <h3>Consultoria de UX</h3>
+                        <p class="cartao__texto">Análise da experiência do usuário com sugestões práticas de melhoria.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Depoimentos (clientes fictícios) -->
+        <section class="secao">
+            <div class="container">
+                <h2>Depoimentos</h2>
+                <p class="secao__intro">O que nossos clientes (fictícios) dizem sobre o nosso trabalho.</p>
+
+                <div class="depoimentos__lista">
+                    <figure class="depoimentos__item depoimento">
+                        <blockquote class="depoimento__citacao">
+                            <p class="depoimento__texto">O site novo ficou lindo e carrega rápido, até no celular. As vendas do nosso ateliê aumentaram logo no primeiro mês.</p>
+                        </blockquote>
+                        <figcaption class="depoimento__autor"><strong class="depoimento__nome">Marina Duarte</strong> · Ateliê Flor de Lis</figcaption>
+                    </figure>
+
+                    <figure class="depoimentos__item depoimento">
+                        <blockquote class="depoimento__citacao">
+                            <p class="depoimento__texto">A equipe entendeu o que a gente queria e entregou uma identidade visual que representa muito bem a nossa cafeteria.</p>
+                        </blockquote>
+                        <figcaption class="depoimento__autor"><strong class="depoimento__nome">Rafael Prado</strong> · Café Grão Dourado</figcaption>
+                    </figure>
+
+                    <figure class="depoimentos__item depoimento">
+                        <blockquote class="depoimento__citacao">
+                            <p class="depoimento__texto">Atendimento atencioso e prazos cumpridos. Recomendo para quem busca um site profissional sem complicação.</p>
+                        </blockquote>
+                        <figcaption class="depoimento__autor"><strong class="depoimento__nome">Juliana Teixeira</strong> · Estúdio Movimento</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato: informações + formulário -->
+        <section class="secao secao--destaque">
+            <div class="container contato__interno">
+                <div class="contato__info">
+                    <h2>Contato</h2>
+                    <p class="secao__intro">Conte sobre o seu projeto. Respondemos em até um dia útil.</p>
+
+                    <address class="contato__endereco">
+                        <p class="contato__item"><strong>Endereço</strong><br>Rua das Ideias, 123 - Centro<br>São Paulo - SP</p>
+                        <p class="contato__item"><strong>Telefone</strong><br><a href="tel:+551140000000">(11) 4000-0000</a></p>
+                        <p class="contato__item"><strong>E-mail</strong><br><a href="mailto:contato@agenciacriativaweb.example">contato@agenciacriativaweb.example</a></p>
+                    </address>
+                    <p class="contato__nota">Endereço, telefone e e-mail fictícios.</p>
+                </div>
+
+                <!-- Sem envio real: o foco é a estrutura e o layout do formulário -->
+                <form class="formulario contato__formulario" action="#" method="post">
+                    <div class="formulario__campo">
+                        <label class="formulario__rotulo">
+                            <span class="formulario__titulo">Nome</span>
+                            <input class="formulario__entrada" type="text" name="nome" autocomplete="name" required>
+                        </label>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__rotulo">
+                            <span class="formulario__titulo">E-mail</span>
+                            <input class="formulario__entrada" type="email" name="email" autocomplete="email" required>
+                        </label>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__rotulo">
+                            <span class="formulario__titulo">Mensagem</span>
+                            <textarea class="formulario__entrada formulario__entrada--texto" name="mensagem" rows="5" minlength="10" required></textarea>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="botao formulario__botao">Enviar mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p class="rodape__texto">&copy; 2026 Agência Criativa Web · Projeto fictício para estudo (EBAC · Módulo 12 · refatoração BEM).</p>
+        </div>
+    </footer>
+    <script src="menu.js"></script>
+</body>
+</html>

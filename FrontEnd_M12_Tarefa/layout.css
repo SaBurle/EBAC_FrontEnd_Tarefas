@@ -1,0 +1,146 @@
+/* ==========================================================
+   layout.css  |  ESTRUTURA (posição, espaçamento das seções,
+   Flexbox e Grid). A aparência fica em styles.css
+   Nomenclatura BEM: .bloco__elemento--modificador
+   ========================================================== */
+
+/* ==========================================
+   1. Contêiner central: 90% da tela, com limite em telas grandes
+   ========================================== */
+.container {
+    width: 90%;
+    max-width: 72rem;
+    margin-inline: auto;
+}
+
+/* ==========================================
+   2. Seções (mobile-first: estas regras valem para o celular)
+   ========================================== */
+.secao {
+    padding-block: 3rem;
+}
+
+/* Home */
+.hero {
+    padding-block: 2.5rem 3rem;
+}
+
+.hero__interno {
+    display: flex;
+    flex-direction: column;     /* celular: texto em cima, imagem embaixo */
+    gap: 2rem;
+}
+
+.hero__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* Sobre nós */
+.sobre__interno {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sobre__numeros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+
+/* Serviços (CSS Grid) */
+.servicos__lista {
+    display: grid;
+    grid-template-columns: 1fr;     /* celular: 1 coluna */
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: servico;
+}
+
+/* Depoimentos */
+.depoimentos__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.depoimentos__item {
+    flex: 1;
+}
+
+/* Contato */
+.contato__interno {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ==========================================
+   3. Media queries de layout (mobile-first: só aumentam, com min-width)
+   ========================================== */
+
+/* A partir de 600px: serviços em 2 colunas */
+@media (min-width: 600px) {
+    .servicos__lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* A partir de 768px: seções lado a lado */
+@media (min-width: 768px) {
+    .hero {
+        padding-block: 4rem;
+    }
+
+    .hero__interno,
+    .sobre__interno,
+    .contato__interno {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .hero__interno {
+        min-height: 60vh;
+    }
+
+    .hero__texto,
+    .hero__imagem,
+    .sobre__imagem,
+    .sobre__texto {
+        flex: 1;
+    }
+
+    .secao {
+        padding-block: 4.5rem;
+    }
+
+    .depoimentos__lista {
+        flex-direction: row;
+    }
+
+    .contato__interno {
+        align-items: flex-start;
+    }
+
+    .contato__info {
+        flex: 1;
+    }
+
+    .contato__formulario {
+        flex: 1.4;
+    }
+}
+
+/* A partir de 992px: serviços em 3 colunas */
+@media (min-width: 992px) {
+    .servicos__lista {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
