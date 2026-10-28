@@ -177,8 +177,9 @@ figure {
    Elementos: botao, icone, lista, item, link   |   Modificadores: botao--aberto, lista--aberto, item--ativo, link--ativo
    ========================================== */
 
+/* Celular: o <nav> não cria caixa; o botão fica ao lado do logo e a lista desce para a linha de baixo */
 .menu {
-    width: 100%;
+    display: contents;
 }
 
 .menu__botao {
@@ -245,6 +246,7 @@ figure {
 /* Celular: lista escondida; o JavaScript adiciona o modificador --aberto */
 .menu__lista {
     display: none;
+    width: 100%;                      /* ocupa a linha inteira, abaixo do logo */
     flex-direction: column;
     gap: 0.25rem;
     margin: 0;
@@ -538,11 +540,12 @@ figure {
     }
 
     .menu {
-        width: auto;
+        display: block;              /* volta a ser uma caixa: menu à direita do logo */
     }
 
     .menu__lista {
         display: flex;               /* a lista fica sempre visível */
+        width: auto;
         flex-direction: row;
         gap: 0.25rem;
         padding: 0;

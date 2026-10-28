@@ -19,7 +19,7 @@
     <!-- Cabeçalho: logo + menu de navegação (hambúrguer com JavaScript) -->
     <header class="cabecalho">
         <div class="cabecalho__interno">
-            <a class="logo" href="#" aria-label="Agência Criativa Web - ir para o início">
+            <a class="logo" href="#home" aria-label="Agência Criativa Web - ir para o início">
                 <svg class="logo__icone" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                     <rect width="32" height="32" rx="9" fill="currentColor"/>
                     <circle cx="12" cy="12" r="5" fill="#14B8C8"/>
@@ -34,11 +34,11 @@
                     <span class="menu__icone" aria-hidden="true"></span>
                 </button>
                 <ul class="menu__lista">
-                    <li class="menu__item menu__item--ativo"><a class="menu__link menu__link--ativo" href="#">Home</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Sobre nós</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Serviços</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Depoimentos</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Contato</a></li>
+                    <li class="menu__item menu__item--ativo"><a class="menu__link menu__link--ativo" href="#home">Home</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#sobre">Sobre nós</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#servicos">Serviços</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#depoimentos">Depoimentos</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#contato">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -46,15 +46,15 @@
 
     <main>
         <!-- Home: banner de boas-vindas -->
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="container hero__interno">
                 <div class="hero__texto">
                     <p class="hero__etiqueta">Agência de design digital</p>
                     <h1>Ideias criativas para marcas que querem ser vistas</h1>
                     <p class="hero__descricao">Bem-vindo à Agência Criativa Web. Criamos identidades, sites e experiências digitais que funcionam bem em qualquer tela.</p>
                     <div class="hero__acoes">
-                        <a class="botao" href="#">Peça um orçamento</a>
-                        <a class="botao botao--secundario" href="#">Conheça os serviços</a>
+                        <a class="botao" href="#contato">Peça um orçamento</a>
+                        <a class="botao botao--secundario" href="#servicos">Conheça os serviços</a>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
         </section>
 
         <!-- Sobre nós -->
-        <section class="secao">
+        <section id="sobre" class="secao">
             <div class="container sobre__interno">
                 <figure class="sobre__imagem">
                     <img
@@ -99,7 +99,7 @@
         </section>
 
         <!-- Serviços: lista em grid -->
-        <section class="secao secao--destaque">
+        <section id="servicos" class="secao secao--destaque">
             <div class="container">
                 <h2>Serviços</h2>
                 <p class="secao__intro">Do primeiro rascunho ao site no ar, cuidamos de cada etapa.</p>
@@ -134,7 +134,7 @@
         </section>
 
         <!-- Depoimentos (clientes fictícios) -->
-        <section class="secao">
+        <section id="depoimentos" class="secao">
             <div class="container">
                 <h2>Depoimentos</h2>
                 <p class="secao__intro">O que nossos clientes (fictícios) dizem sobre o nosso trabalho.</p>
@@ -165,7 +165,7 @@
         </section>
 
         <!-- Contato: informações + formulário -->
-        <section class="secao secao--destaque">
+        <section id="contato" class="secao secao--destaque">
             <div class="container contato__interno">
                 <div class="contato__info">
                     <h2>Contato</h2>
@@ -213,6 +213,6 @@
             <p class="rodape__texto">&copy; 2026 Agência Criativa Web · Projeto fictício para estudo (EBAC · Módulo 12 · refatoração BEM).</p>
         </div>
     </footer>
-    <script src="menu.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 </html>
