@@ -1,0 +1,78 @@
+// ==========================================================
+// _variaveis.scss  |  Valores reutilizáveis do projeto
+// (cores, fontes, espaçamentos, arredondamentos e breakpoints)
+// ==========================================================
+
+// ----------------------------------------------------------
+// Cores: tema claro
+// ----------------------------------------------------------
+$cor-fundo: #F7F5FC;
+$cor-cartao: #FFFFFF;
+$cor-texto: #1E1A2B;
+$cor-apoio: #5F5A72;
+$cor-linha: #E3DEF0;
+$cor-principal: #6D3FE0;
+$cor-sobre-principal: #FFFFFF;   // texto em cima da cor principal
+$cor-azul: #3B5BDB;
+$cor-chumbo: #2D2B3A;
+$cor-ciano: #14B8C8;
+$cor-ciano-texto: #0E8FA0;
+$cor-rodape-texto: #EEEAFB;
+$hero-fundo: linear-gradient(135deg, #EDE6FF 0%, #F7F5FC 65%);
+$sombra: 0 0.25rem 1.25rem rgba(45, 43, 58, 0.08);
+
+// ----------------------------------------------------------
+// Cores: tema escuro (aplicado no modo escuro do sistema)
+// ----------------------------------------------------------
+$escuro-fundo: #0F0D18;
+$escuro-cartao: #191625;
+$escuro-texto: #EEEAFB;
+$escuro-apoio: #A29DB8;
+$escuro-linha: #2B2740;
+$escuro-principal: #A084FF;
+$escuro-sobre-principal: #0F0D18;
+$escuro-azul: #7C9BFF;
+$escuro-ciano: #35D0DD;
+$escuro-ciano-texto: #35D0DD;
+$escuro-hero-fundo: linear-gradient(135deg, #1B1633 0%, #0F0D18 65%);
+$escuro-sombra: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.35);
+
+// ----------------------------------------------------------
+// Fontes
+// ----------------------------------------------------------
+$fonte-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+$fonte-destaque: "Fraunces", Georgia, serif;
+$fonte-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+// ----------------------------------------------------------
+// Espaçamentos (todos calculados a partir do espaçamento padrão)
+// ----------------------------------------------------------
+$espacamento-padrao: 1rem;
+$espacamento-metade: calc($espacamento-padrao / 2);          // 0.5rem
+$espacamento-minimo: calc($espacamento-metade / 2);          // 0.25rem
+$espacamento-compacto: $espacamento-padrao * 0.75;           // 0.75rem
+$espacamento-gap: $espacamento-padrao * 1.25;                // 1.25rem
+$espacamento-medio: $espacamento-padrao * 1.5;               // 1.5rem
+$espacamento-grande: $espacamento-padrao * 2;                // 2rem
+$espacamento-hero-celular: $espacamento-padrao * 2.5;        // 2.5rem
+$espacamento-secao: $espacamento-padrao * 3;                 // 3rem
+$espacamento-hero: $espacamento-padrao * 4;                  // 4rem
+$espacamento-secao-grande: $espacamento-padrao * 4.5;        // 4.5rem
+
+// ----------------------------------------------------------
+// Arredondamentos
+// ----------------------------------------------------------
+$raio-pequeno: 0.5rem;
+$raio-medio: 0.75rem;
+$raio-grande: 1rem;
+$raio-pilula: 999px;
+
+// ----------------------------------------------------------
+// Largura do conteúdo e breakpoints (mobile-first, min-width)
+// ----------------------------------------------------------
+$largura-container: 90%;
+$largura-maxima: 72rem;
+
+$bp-celular-grande: 600px;
+$bp-tablet: 768px;
+$bp-desktop: 992px;

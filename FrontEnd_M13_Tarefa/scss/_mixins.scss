@@ -1,0 +1,46 @@
+// ==========================================================
+// _mixins.scss  |  Blocos de estilo reutilizáveis
+// Uso: @use 'mixins';  e depois  @include mixins.nome-do-mixin;
+// ==========================================================
+@use 'variaveis';
+
+// Borda arredondada (valor padrão: 0.5rem)
+@mixin borda-arredondada($raio: variaveis.$raio-pequeno) {
+    border-radius: $raio;
+}
+
+// Contêiner central: 90% da tela, com limite em telas grandes
+@mixin container-central {
+    width: variaveis.$largura-container;
+    max-width: variaveis.$largura-maxima;
+    margin-inline: auto;
+}
+
+// Espaçamento vertical das seções (valor padrão: 3rem)
+@mixin espacamento-secao($vertical: variaveis.$espacamento-secao) {
+    padding-block: $vertical;
+}
+
+// Caixa com borda e cantos arredondados (cartão, depoimento e formulário)
+@mixin cartao-base($fundo: var(--fundo)) {
+    padding: variaveis.$espacamento-medio;
+    background: $fundo;
+    border: 1px solid var(--linha);
+    @include borda-arredondada(variaveis.$raio-medio);
+}
+
+// Botão padrão (o bloco .botao)
+@mixin botao-base {
+    display: inline-block;
+    min-height: 2.75rem;
+    padding: variaveis.$espacamento-compacto variaveis.$espacamento-medio;
+    background: var(--principal);
+    color: var(--sobre-principal);
+    border: 2px solid var(--principal);
+    @include borda-arredondada(variaveis.$raio-pilula);
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}

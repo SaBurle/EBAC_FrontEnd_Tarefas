@@ -1,0 +1,428 @@
+// ==========================================================
+// _componentes.scss  |  APARÊNCIA dos blocos BEM
+// Nomenclatura: .bloco__elemento--modificador
+// (a posição e o tamanho das áreas ficam em _layout.scss)
+// ==========================================================
+@use 'variaveis';
+@use 'mixins';
+
+// ==========================================
+// Bloco: cabecalho
+// ==========================================
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--cartao);
+    border-bottom: 1px solid var(--linha);
+
+    &__interno {
+        @include mixins.container-central;
+        display: flex;
+        flex-wrap: wrap;                  // o menu cai para a linha de baixo no celular
+        align-items: center;
+        justify-content: space-between;
+        padding-block: variaveis.$espacamento-compacto;
+    }
+}
+
+// ==========================================
+// Bloco: logo
+// ==========================================
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--texto);
+    font-family: variaveis.$fonte-destaque;
+    font-size: 1.125rem;
+    text-decoration: none;
+
+    &__icone {
+        width: 2rem;
+        height: 2rem;
+        color: var(--principal);
+    }
+
+    &__destaque {
+        color: var(--principal);
+    }
+}
+
+// ==========================================
+// Bloco: menu (botão hambúrguer em JavaScript)
+// Elementos: botao, icone, lista, item, link
+// Modificadores: botao--aberto, lista--aberto, item--ativo, link--ativo
+// ==========================================
+
+// Celular: o <nav> não cria caixa; o botão fica ao lado do logo
+// e a lista desce para a linha de baixo
+.menu {
+    display: contents;
+
+    &__botao {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;                   // área de toque confortável
+        height: 2.75rem;
+        padding: 0;
+        background: transparent;
+        border: 1px solid var(--linha);
+        @include mixins.borda-arredondada;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 0.1875rem solid var(--ciano);
+            outline-offset: 0.1875rem;
+        }
+    }
+
+    // As 3 barrinhas: uma no meio e duas nas pontas (::before e ::after)
+    &__icone,
+    &__icone::before,
+    &__icone::after {
+        display: block;
+        width: 1.5rem;
+        height: 0.125rem;
+        background: var(--texto);
+        border-radius: 0.125rem;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    &__icone {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        &::before {
+            top: -0.4375rem;
+        }
+
+        &::after {
+            top: 0.4375rem;
+        }
+    }
+
+    // Menu aberto: as barras viram um X (modificador --aberto do botão)
+    &__botao--aberto &__icone {
+        background: transparent;
+
+        &::before {
+            transform: translateY(0.4375rem) rotate(45deg);
+        }
+
+        &::after {
+            transform: translateY(-0.4375rem) rotate(-45deg);
+        }
+    }
+
+    // Celular: lista escondida; o JavaScript adiciona o modificador --aberto
+    &__lista {
+        display: none;
+        width: 100%;                      // ocupa a linha inteira, abaixo do logo
+        flex-direction: column;
+        gap: variaveis.$espacamento-minimo;
+        margin: 0;
+        padding: variaveis.$espacamento-compacto 0 variaveis.$espacamento-metade;
+        list-style: none;
+
+        &--aberto {
+            display: flex;
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: variaveis.$espacamento-compacto variaveis.$espacamento-padrao;
+        @include mixins.borda-arredondada;
+        color: var(--texto);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            background: var(--linha);
+            color: var(--principal);
+        }
+
+        &--ativo {
+            color: var(--principal);
+        }
+    }
+
+    &__item--ativo {
+        background: var(--linha);
+        @include mixins.borda-arredondada;
+    }
+}
+
+// ==========================================
+// Bloco: botao   |   Modificador: --secundario
+// ==========================================
+.botao {
+    @include mixins.botao-base;
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+
+    &--secundario {
+        background: transparent;
+        color: var(--principal);
+
+        &:hover {
+            background: var(--linha);
+            filter: none;
+        }
+    }
+}
+
+// ==========================================
+// Bloco: hero (banner de boas-vindas)
+// ==========================================
+.hero {
+    background: var(--hero-fundo);
+
+    &__etiqueta {
+        margin-bottom: variaveis.$espacamento-compacto;
+        color: var(--ciano-texto);
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    &__descricao {
+        max-width: 36rem;
+        color: var(--apoio);
+        font-size: 1.125rem;
+    }
+
+    &__img {
+        width: 100%;
+        box-shadow: var(--sombra);
+    }
+}
+
+// ==========================================
+// Bloco: secao   |   Modificador: --destaque
+// ==========================================
+.secao {
+    &--destaque {
+        background: var(--cartao);
+        border-block: 1px solid var(--linha);
+    }
+
+    &__intro {
+        max-width: 36rem;
+        color: var(--apoio);
+    }
+}
+
+// ==========================================
+// Bloco: sobre
+// ==========================================
+.sobre {
+    &__img {
+        width: 100%;
+    }
+
+    &__numeros {
+        margin: variaveis.$espacamento-medio 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--apoio);
+    }
+
+    &__valor {
+        display: block;
+        color: var(--principal);
+        font-family: variaveis.$fonte-destaque;
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+}
+
+// ==========================================
+// Bloco: cartao (serviços)
+// Elemento: texto
+// ==========================================
+.cartao {
+    @include mixins.cartao-base;
+    counter-increment: servico;
+    border-left: 0.25rem solid var(--principal);
+
+    &::before {
+        content: counter(servico, decimal-leading-zero);
+        display: block;
+        margin-bottom: variaveis.$espacamento-metade;
+        color: var(--ciano-texto);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+    }
+
+    &__texto {
+        margin: 0;
+        color: var(--apoio);
+    }
+}
+
+// ==========================================
+// Bloco: depoimento
+// Elementos: citacao, texto, autor, nome
+// ==========================================
+.depoimento {
+    @include mixins.cartao-base(var(--cartao));
+    box-shadow: var(--sombra);
+
+    &__citacao {
+        margin: 0 0 variaveis.$espacamento-padrao;
+
+        &::before {
+            content: "\201C";
+            display: block;
+            height: 2rem;
+            color: var(--principal);
+            font-family: variaveis.$fonte-destaque;
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+    }
+
+    &__texto {
+        margin: 0;
+    }
+
+    &__autor {
+        color: var(--apoio);
+        font-size: 0.9375rem;
+    }
+
+    &__nome {
+        color: var(--texto);
+    }
+}
+
+// ==========================================
+// Bloco: contato (informações)
+// ==========================================
+.contato {
+    &__endereco {
+        font-style: normal;
+    }
+
+    &__item {
+        margin-bottom: variaveis.$espacamento-padrao;
+    }
+
+    &__nota {
+        color: var(--apoio);
+        font-size: 0.875rem;
+    }
+}
+
+// ==========================================
+// Bloco: formulario
+// Elementos: campo, rotulo, titulo, entrada, botao
+// Modificador: entrada--texto
+// ==========================================
+.formulario {
+    @include mixins.cartao-base;
+
+    &__campo {
+        margin-bottom: variaveis.$espacamento-padrao;
+    }
+
+    &__rotulo {
+        display: block;
+    }
+
+    &__titulo {
+        display: block;
+        margin-bottom: 0.375rem;
+        font-weight: 600;
+    }
+
+    &__entrada {
+        display: block;
+        width: 100%;
+        min-height: 2.75rem;
+        padding: variaveis.$espacamento-compacto 0.875rem;
+        background: var(--cartao);
+        color: var(--texto);
+        border: 1px solid var(--linha);
+        @include mixins.borda-arredondada;
+        font: inherit;
+
+        &:focus {
+            outline: none;
+            border-color: var(--principal);
+            box-shadow: 0 0 0 0.1875rem var(--linha);
+        }
+
+        &--texto {
+            resize: vertical;
+        }
+    }
+
+    &__botao {
+        width: 100%;
+    }
+}
+
+// ==========================================
+// Bloco: rodape
+// ==========================================
+.rodape {
+    padding-block: variaveis.$espacamento-medio;
+    background: var(--chumbo);
+    color: variaveis.$cor-rodape-texto;
+    font-size: 0.9375rem;
+    text-align: center;
+
+    &__texto {
+        margin: 0;
+    }
+}
+
+// ==========================================
+// Media queries dos componentes (mobile-first, min-width)
+// ==========================================
+@media (min-width: variaveis.$bp-celular-grande) {
+    .formulario__botao {
+        width: auto;
+    }
+}
+
+// A partir do tablet: menu em linha, sem hambúrguer
+@media (min-width: variaveis.$bp-tablet) {
+    .menu__botao {
+        display: none;               // some o botão
+    }
+
+    .menu {
+        display: block;              // volta a ser uma caixa: menu à direita do logo
+    }
+
+    .menu__lista {
+        display: flex;               // a lista fica sempre visível
+        width: auto;
+        flex-direction: row;
+        gap: variaveis.$espacamento-minimo;
+        padding: 0;
+    }
+
+    .formulario {
+        padding: variaveis.$espacamento-grande;
+    }
+}
+
+@media (min-width: variaveis.$bp-desktop) {
+    .logo {
+        font-size: 1.25rem;
+    }
+}

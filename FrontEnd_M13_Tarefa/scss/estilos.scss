@@ -1,0 +1,10 @@
+// ==========================================================
+// estilos.scss  |  Arquivo principal: junta todos os parciais
+// Compilar:  sass --watch scss/estilos.scss css/styles.css
+// A ordem importa: base -> componentes -> layout (mesma do M12)
+// ==========================================================
+@use 'variaveis';
+@use 'mixins';
+@use 'base';
+@use 'componentes';
+@use 'layout';

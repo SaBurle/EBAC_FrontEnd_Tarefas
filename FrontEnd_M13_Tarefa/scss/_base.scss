@@ -1,0 +1,130 @@
+// ==========================================================
+// _base.scss  |  Cores do tema, reset e tipografia
+// (único lugar com seletores de tag)
+// ==========================================================
+@use 'variaveis';
+@use 'mixins';
+
+// ==========================================
+// 1. Cores (tema claro e escuro automático)
+// As variáveis SASS alimentam as variáveis CSS (por isso o #{ })
+// ==========================================
+:root {
+    --fundo: #{variaveis.$cor-fundo};
+    --cartao: #{variaveis.$cor-cartao};
+    --texto: #{variaveis.$cor-texto};
+    --apoio: #{variaveis.$cor-apoio};
+    --linha: #{variaveis.$cor-linha};
+    --principal: #{variaveis.$cor-principal};
+    --sobre-principal: #{variaveis.$cor-sobre-principal};
+    --azul: #{variaveis.$cor-azul};
+    --chumbo: #{variaveis.$cor-chumbo};
+    --ciano: #{variaveis.$cor-ciano};
+    --ciano-texto: #{variaveis.$cor-ciano-texto};
+    --hero-fundo: #{variaveis.$hero-fundo};
+    --sombra: #{variaveis.$sombra};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fundo: #{variaveis.$escuro-fundo};
+        --cartao: #{variaveis.$escuro-cartao};
+        --texto: #{variaveis.$escuro-texto};
+        --apoio: #{variaveis.$escuro-apoio};
+        --linha: #{variaveis.$escuro-linha};
+        --principal: #{variaveis.$escuro-principal};
+        --sobre-principal: #{variaveis.$escuro-sobre-principal};
+        --azul: #{variaveis.$escuro-azul};
+        --ciano: #{variaveis.$escuro-ciano};
+        --ciano-texto: #{variaveis.$escuro-ciano-texto};
+        --hero-fundo: #{variaveis.$escuro-hero-fundo};
+        --sombra: #{variaveis.$escuro-sombra};
+    }
+}
+
+// ==========================================
+// 2. Reset e tipografia
+// ==========================================
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;           // 1rem = 16px do navegador
+    scroll-padding-top: 5rem;  // o menu fixo não cobre o título da seção
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: variaveis.$fonte-texto;
+    line-height: 1.6;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 0.75em;
+    font-family: variaveis.$fonte-titulo;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem);   // cresce com a largura da tela
+}
+
+h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    color: var(--principal);
+}
+
+// Imagens flexíveis
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    @include mixins.borda-arredondada(variaveis.$raio-grande);
+}
+
+figure {
+    margin: 0;
+}
+
+// Foco visível para quem navega pelo teclado
+:focus-visible {
+    outline: 0.1875rem solid var(--ciano);
+    outline-offset: 0.1875rem;
+}
+
+// ==========================================
+// 3. Utilitário de acessibilidade
+// ==========================================
+// Só leitores de tela "veem" este texto
+.sr-somente {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

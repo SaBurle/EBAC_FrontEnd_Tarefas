@@ -1,0 +1,149 @@
+// ==========================================================
+// _layout.scss  |  ESTRUTURA (posição, espaçamento das seções,
+// Flexbox e Grid). A aparência fica em _componentes.scss
+// ==========================================================
+@use 'variaveis';
+@use 'mixins';
+
+// ==========================================
+// Contêiner central: 90% da tela, com limite em telas grandes
+// ==========================================
+.container {
+    @include mixins.container-central;
+}
+
+// ==========================================
+// Seções (mobile-first: estas regras valem para o celular)
+// ==========================================
+.secao {
+    @include mixins.espacamento-secao;
+}
+
+// Home
+.hero {
+    padding-block: variaveis.$espacamento-hero-celular variaveis.$espacamento-secao;
+
+    &__interno {
+        display: flex;
+        flex-direction: column;     // celular: texto em cima, imagem embaixo
+        gap: variaveis.$espacamento-grande;
+    }
+
+    &__acoes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: variaveis.$espacamento-compacto;
+        margin-top: variaveis.$espacamento-medio;
+    }
+}
+
+// Sobre nós
+.sobre {
+    &__interno {
+        display: flex;
+        flex-direction: column;
+        gap: variaveis.$espacamento-grande;
+    }
+
+    &__numeros {
+        display: flex;
+        flex-wrap: wrap;
+        gap: variaveis.$espacamento-padrao variaveis.$espacamento-grande;
+    }
+}
+
+// Serviços (CSS Grid)
+.servicos__lista {
+    display: grid;
+    grid-template-columns: 1fr;     // celular: 1 coluna
+    gap: variaveis.$espacamento-gap;
+    margin: variaveis.$espacamento-grande 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: servico;
+}
+
+// Depoimentos
+.depoimentos {
+    &__lista {
+        display: flex;
+        flex-direction: column;
+        gap: variaveis.$espacamento-gap;
+        margin-top: variaveis.$espacamento-grande;
+    }
+
+    &__item {
+        flex: 1;
+    }
+}
+
+// Contato
+.contato__interno {
+    display: flex;
+    flex-direction: column;
+    gap: variaveis.$espacamento-grande;
+}
+
+// ==========================================
+// Media queries de layout (mobile-first: só aumentam, com min-width)
+// ==========================================
+
+// A partir do celular grande: serviços em 2 colunas
+@media (min-width: variaveis.$bp-celular-grande) {
+    .servicos__lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// A partir do tablet: seções lado a lado
+@media (min-width: variaveis.$bp-tablet) {
+    .hero {
+        padding-block: variaveis.$espacamento-hero;
+    }
+
+    .hero__interno,
+    .sobre__interno,
+    .contato__interno {
+        flex-direction: row;
+        align-items: center;
+        gap: variaveis.$espacamento-secao;
+    }
+
+    .hero__interno {
+        min-height: 60vh;
+    }
+
+    .hero__texto,
+    .hero__imagem,
+    .sobre__imagem,
+    .sobre__texto {
+        flex: 1;
+    }
+
+    .secao {
+        @include mixins.espacamento-secao(variaveis.$espacamento-secao-grande);
+    }
+
+    .depoimentos__lista {
+        flex-direction: row;
+    }
+
+    .contato__interno {
+        align-items: flex-start;
+    }
+
+    .contato__info {
+        flex: 1;
+    }
+
+    .contato__formulario {
+        flex: 1.4;
+    }
+}
+
+// A partir do desktop: serviços em 3 colunas
+@media (min-width: variaveis.$bp-desktop) {
+    .servicos__lista {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
