@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Ilustração de um cachorro e um gato">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#5eead4"/></linearGradient>
+    <linearGradient id="cao" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c2410c"/><stop offset="1" stop-color="#fdba74"/></linearGradient>
+    <linearGradient id="gato" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#475569"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient>
+  </defs>
+  <rect width="600" height="450" rx="36" fill="url(#fundo)"/>
+  <g fill="#ffffff" opacity=".18"><circle cx="90" cy="80" r="22"/><circle cx="60" cy="130" r="12"/><circle cx="120" cy="140" r="12"/><circle cx="520" cy="360" r="22"/><circle cx="490" cy="400" r="12"/><circle cx="550" cy="405" r="12"/></g>
+  <!-- cachorro -->
+  <g transform="translate(-10 -10)"><ellipse cx="205" cy="190" rx="38" ry="78" fill="#9a3412" transform="rotate(18 205 190)"/>
+  <ellipse cx="395" cy="190" rx="38" ry="78" fill="#9a3412" transform="rotate(-18 395 190)"/>
+  <circle cx="300" cy="230" r="120" fill="url(#cao)"/>
+  <ellipse cx="300" cy="270" rx="62" ry="48" fill="#ffedd5"/>
+  <circle cx="258" cy="212" r="14" fill="#1c1917"/><circle cx="342" cy="212" r="14" fill="#1c1917"/>
+  <circle cx="262" cy="207" r="4" fill="#fff"/><circle cx="346" cy="207" r="4" fill="#fff"/>
+  <ellipse cx="300" cy="252" rx="20" ry="14" fill="#1c1917"/>
+  <path d="M300 266 v16 M300 282 q-16 14 -30 4 M300 282 q16 14 30 4" fill="none" stroke="#1c1917" stroke-width="5" stroke-linecap="round"/>
+  <path d="M290 296 q10 26 20 0 z" fill="#f43f5e"/>
+  </g>
+  <!-- gato -->
+  <g transform="translate(458 318) scale(.5)">
+    <path d="M-110 -70 L-90 -150 L-30 -105 Z M110 -70 L90 -150 L30 -105 Z" fill="#475569"/>
+    <circle cx="0" cy="0" r="115" fill="url(#gato)"/>
+    <ellipse cx="-42" cy="-8" rx="13" ry="18" fill="#fde68a"/><ellipse cx="42" cy="-8" rx="13" ry="18" fill="#fde68a"/>
+    <ellipse cx="-42" cy="-8" rx="5" ry="14" fill="#1c1917"/><ellipse cx="42" cy="-8" rx="5" ry="14" fill="#1c1917"/>
+    <path d="M-10 30 h20 l-10 12 z" fill="#f472b6"/>
+    <path d="M0 42 q-14 14 -28 4 M0 42 q14 14 28 4" fill="none" stroke="#1c1917" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-120 20 h-50 M-120 38 l-46 14 M120 20 h50 M120 38 l46 14" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
