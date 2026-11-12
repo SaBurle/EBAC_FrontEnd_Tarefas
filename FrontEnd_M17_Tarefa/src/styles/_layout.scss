@@ -1,0 +1,118 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+.conteudo {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: $espaco-4;
+}
+
+.secao {
+  padding-block: $espaco-8;
+
+  @include a-partir-de($bp-md) {
+    padding-block: $espaco-12;
+  }
+
+  &--destaque {
+    background: var(--superficie);
+  }
+
+  &__titulo {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--titulo);
+
+    @include a-partir-de($bp-sm) {
+      font-size: 1.875rem;
+    }
+  }
+
+  &__texto {
+    margin-top: $espaco-2;
+    color: var(--texto-suave);
+  }
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $espaco-6;
+  margin-top: $espaco-6;
+
+  @include a-partir-de($bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include a-partir-de($bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cabecalho {
+  color: $branco;
+  background: linear-gradient(135deg, $teal-900, $teal-700);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+
+  &__conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: $espaco-2;
+    padding-block: $espaco-3;
+
+    @include a-partir-de($bp-sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__marca {
+    display: inline-flex;
+    gap: $espaco-2;
+    align-items: center;
+    min-height: $toque-minimo;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  &__logo {
+    font-size: 1.75rem;
+  }
+
+  &__lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $espaco-2;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: $toque-minimo;
+    padding-inline: $espaco-3;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: $raio-1;
+
+    &:hover {
+      background: rgb(255 255 255 / 20%);
+    }
+
+    &:focus-visible {
+      outline-color: $branco;
+    }
+  }
+}
+
+.rodape {
+  padding-block: $espaco-6;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+  text-align: center;
+  background: var(--superficie);
+  border-top: 1px solid var(--borda);
+}

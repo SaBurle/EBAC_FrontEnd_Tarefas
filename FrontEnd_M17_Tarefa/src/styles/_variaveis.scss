@@ -1,0 +1,41 @@
+// Paleta (valores fixos). As cores por tema ficam em _tema.scss.
+$teal-50: #f0fdfa;
+$teal-100: #ccfbf1;
+$teal-300: #5eead4;
+$teal-700: #0f766e;
+$teal-900: #134e4a;
+
+$laranja-300: #fdba74;
+$laranja-700: #c2410c;
+
+$cinza-100: #f1f5f9;
+$cinza-300: #cbd5e1;
+$cinza-600: #475569;
+$cinza-700: #334155;
+$cinza-800: #1e293b;
+$cinza-900: #0f172a;
+
+$vermelho-300: #fca5a5;
+$vermelho-700: #b91c1c;
+
+$branco: #ffffff;
+
+// Espaçamentos e formas
+$espaco-1: 0.25rem;
+$espaco-2: 0.5rem;
+$espaco-3: 0.75rem;
+$espaco-4: 1rem;
+$espaco-6: 1.5rem;
+$espaco-8: 2rem;
+$espaco-12: 3rem;
+
+$raio-1: 0.5rem;
+$raio-2: 1rem;
+$raio-pilula: 999px;
+
+$toque-minimo: 2.75rem; // 44px
+
+// Pontos de quebra (mobile-first, sempre min-width)
+$bp-sm: 40rem;
+$bp-md: 48rem;
+$bp-lg: 64rem;

@@ -1,0 +1,38 @@
+@use 'variaveis' as *;
+
+// Tema claro por padrão; escuro automático pelo sistema.
+:root {
+  color-scheme: light dark;
+
+  --fundo: #{$teal-50};
+  --superficie: #{$branco};
+  --superficie-2: #{$teal-50};
+  --borda: #{$teal-100};
+  --texto: #{$cinza-800};
+  --texto-suave: #{$cinza-600};
+  --titulo: #{$teal-900};
+  --preco: #{$laranja-700};
+  --destaque: #{$teal-700};
+  --erro: #{$vermelho-700};
+  --campo-borda: #{$cinza-300};
+  --campo-fundo: #{$branco};
+  --esqueleto: #{$teal-100};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #{$cinza-900};
+    --superficie: #{$cinza-800};
+    --superficie-2: #{$cinza-900};
+    --borda: #{$cinza-700};
+    --texto: #{$cinza-100};
+    --texto-suave: #{$cinza-300};
+    --titulo: #{$teal-100};
+    --preco: #{$laranja-300};
+    --destaque: #{$teal-300};
+    --erro: #{$vermelho-300};
+    --campo-borda: #{$cinza-600};
+    --campo-fundo: #{$cinza-900};
+    --esqueleto: #{$cinza-700};
+  }
+}

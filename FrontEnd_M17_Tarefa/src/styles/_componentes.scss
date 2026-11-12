@@ -1,0 +1,179 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+// Cartão de produto
+.produto {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: $raio-2;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+
+  &__imagem {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__corpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: $espaco-4;
+  }
+
+  &__nome {
+    font-size: 1.125rem;
+    color: var(--titulo);
+  }
+
+  &__descricao {
+    margin-top: $espaco-1;
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+  }
+
+  &__preco {
+    margin-top: auto;
+    padding-top: $espaco-3;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--preco);
+  }
+}
+
+// Carregamento (mensagem + esqueletos)
+.carregando {
+  &__texto {
+    margin-top: $espaco-2;
+    font-weight: 600;
+    color: var(--texto-suave);
+  }
+}
+
+.esqueleto {
+  overflow: hidden;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: $raio-2;
+
+  &__imagem,
+  &__linha {
+    background: var(--esqueleto);
+    animation: pulso 1.2s ease-in-out infinite;
+  }
+
+  &__imagem {
+    aspect-ratio: 4 / 3;
+  }
+
+  &__corpo {
+    display: grid;
+    gap: $espaco-2;
+    padding: $espaco-4;
+  }
+
+  &__linha {
+    height: 0.875rem;
+    border-radius: $raio-1;
+
+    &--titulo {
+      width: 70%;
+      height: 1.125rem;
+    }
+
+    &--curta {
+      width: 40%;
+    }
+  }
+}
+
+@keyframes pulso {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esqueleto__imagem,
+  .esqueleto__linha {
+    animation: none;
+  }
+}
+
+// Formulário
+.formulario {
+  display: grid;
+  gap: $espaco-4;
+  max-width: 36rem;
+  padding: $espaco-4;
+  margin-top: $espaco-6;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-radius: $raio-2;
+
+  @include a-partir-de($bp-sm) {
+    padding: $espaco-6;
+  }
+
+  &__aviso {
+    min-height: 1.5rem;
+    font-weight: 600;
+    color: var(--destaque);
+  }
+}
+
+.campo {
+  display: grid;
+  gap: $espaco-1;
+
+  &__rotulo {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  &__entrada {
+    width: 100%;
+    min-height: $toque-minimo;
+    padding: $espaco-2 $espaco-3;
+    font: inherit;
+    color: var(--texto);
+    background: var(--campo-fundo);
+    border: 1px solid var(--campo-borda);
+    border-radius: $raio-1;
+
+    &--area {
+      resize: vertical;
+    }
+  }
+
+  &__erro {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--erro);
+  }
+
+  &--erro &__entrada {
+    border-color: var(--erro);
+  }
+}
+
+// Botão (degradê do tom mais escuro ao mais claro)
+.botao {
+  min-height: $toque-minimo;
+  padding-inline: $espaco-8;
+  font: inherit;
+  font-weight: 700;
+  color: $branco;
+  cursor: pointer;
+  background: linear-gradient(135deg, $teal-900, $teal-700);
+  border: 0;
+  border-radius: $raio-pilula;
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+}

@@ -1,0 +1,12 @@
+@use 'variaveis' as *;
+
+@mixin a-partir-de($ponto) {
+  @media (min-width: $ponto) {
+    @content;
+  }
+}
+
+@mixin foco-visivel {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
