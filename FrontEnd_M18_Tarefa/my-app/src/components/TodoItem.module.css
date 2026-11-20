@@ -1,0 +1,47 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.rotulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 44px;
+    cursor: pointer;
+    word-break: break-word;
+}
+
+.rotulo input {
+    width: 20px;
+    height: 20px;
+}
+
+/* Texto de tarefa concluída */
+.concluida {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Botão de alerta */
+.button.alerta {
+    background-color: #f44336;
+}
+
+.button.alerta:hover {
+    background-color: #d32f2f;
+}

@@ -1,0 +1,56 @@
+/* Estilo geral do app (mobile first) */
+.main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #fefefe;
+    min-height: 100vh;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+}
+
+.rodape {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button {
+    min-height: 44px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #607d8b;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #546e7a;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Telas maiores: rodapé em linha e margem ao redor */
+@media (min-width: 600px) {
+    .main {
+        margin: 40px auto;
+        min-height: auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .rodape {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
