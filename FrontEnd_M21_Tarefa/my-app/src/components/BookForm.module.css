@@ -1,0 +1,8 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    margin-bottom: 16px;
+}
