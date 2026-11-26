@@ -1,0 +1,9 @@
+.title {
+    padding: 1rem;
+}
+
+@media (min-width: 600px) {
+    .title {
+        padding: 2rem;
+    }
+}

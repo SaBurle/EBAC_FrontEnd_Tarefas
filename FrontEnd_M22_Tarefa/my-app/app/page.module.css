@@ -1,0 +1,30 @@
+.apresentacao {
+    padding: 0 1rem 2rem;
+}
+
+.apresentacao__texto {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.apresentacao__link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    background-color: #0ea5e9;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.apresentacao__link:hover {
+    background-color: #0284c7;
+}
+
+@media (min-width: 600px) {
+    .apresentacao {
+        padding: 0 2rem 2rem;
+    }
+}
